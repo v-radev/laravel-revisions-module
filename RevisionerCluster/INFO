@@ -1,0 +1,18 @@
+
+1. Listen for model create and model update events
+2. Catch the "dirty" data and save it to another table ?with the current "clean" data
+3. Make a list where you display all revisions
+4. Compare "dirty" data with current or saved "clean" data
+5. On approve disable model events and make the model create or update
+
+
+?when approved just clean revision data but keep user-model relation
+
+
+TABLE
+id
+item_id    int|nullable
+user_id    int|fk
+model      varchar
+before     bigtext
+after      bigtext
