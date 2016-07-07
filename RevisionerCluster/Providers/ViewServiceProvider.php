@@ -11,7 +11,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom( realpath( base_path( 'app/Clusters/RevisionerCluster/Resources/views' ) ), config( 'revisionermodule.module_name' ) );
+        $this->loadViewsFrom( realpath( base_path( 'app/Clusters/RevisionerCluster/Resources/views' ) ), config( 'revisionercluster.module_name' ) );
 
         $this->loadGlobalVariables();
     }
@@ -28,15 +28,15 @@ class ViewServiceProvider extends ServiceProvider
 
     protected function loadGlobalVariables()
     {
-        $moduleViewsNamespace = config( 'revisionermodule.views_name_space' ) . '::';
-        $moduleRoutesNamespace = config( 'revisionermodule.routes_name_space' ) . '.';
+        $moduleViewsNamespace = config( 'revisionercluster.views_name_space' ) . '::';
+        $moduleRoutesNamespace = config( 'revisionercluster.routes_name_space' ) . '.';
 
         $revisionViewsNamespace = $moduleViewsNamespace . 'revisions.';
         $revisionRoutesNamespace = $moduleRoutesNamespace . 'revisions.';
 
         // Globals
         view()->share( 'revisionerClusterViews', $moduleViewsNamespace );
-        view()->share( 'revisionerClusterLayout', config( 'revisionermodule.master_layout' ) );
+        view()->share( 'revisionerClusterLayout', config( 'revisionercluster.master_layout' ) );
 
         view()->share( 'revisionViews', $revisionViewsNamespace );
         view()->share( 'revisionRoutes', $revisionRoutesNamespace );

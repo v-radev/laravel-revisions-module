@@ -2,11 +2,16 @@
 
 namespace App\Clusters\RevisionerCluster\Controllers;
 
+use App\Clusters\RevisionerCluster\Models\Revision;
+
 class RevisionsController extends RevisionerClusterController
 {
     public function index()
     {
-        // List all revisions by name of model
+        //TODO group by model name
+        $revisions = Revision::all();
+
+        return $this->view('revisions.index', compact('revisions'));
     }
 
     public function show()
@@ -17,5 +22,10 @@ class RevisionsController extends RevisionerClusterController
     public function update()
     {
         // Update revision and model record if approved
+    }
+
+    public function destroy()
+    {
+        // Delete revision
     }
 }

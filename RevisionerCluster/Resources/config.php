@@ -2,17 +2,17 @@
 
 return [
 
-    'module_name'       => 'revisionermodule',
+    'module_name'       => 'revisionerCluster',
 
     /*
     | The name of the namespace under which the RevisionerCluster views are registered and accessed.
     */
-    'views_name_space'  => 'revisionermodule',
+    'views_name_space'  => 'revisionerCluster',
 
     /*
     | The name of the namespace under which the RevisionerCluster routes are registered and accessed.
     */
-    'routes_name_space' => 'revisionermodule',
+    'routes_name_space' => 'revisionercluster',
 
     /*
     | The layout that the RevisionerCluster templates extend.
