@@ -15,16 +15,18 @@ class CreateRevisionsTable extends Migration
         Schema::create('revisions', function ( Blueprint $table ) {
             $table->increments('id');
             $table->integer('item_id')->unsigned()->nullable()->index();
-            $table->integer('user_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('model', 240);
             $table->longText('before');
-            $table->longText('after');
+            $table->longText('after')->nullable();
+            $table->boolean('approved')->default(0);
+            $table->boolean('revised')->default(0);
             $table->timestamps();
-        } );
+        });
 
         Schema::table('revisions', function ( Blueprint $table ) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
-        } );
+        });
     }
 
     /**

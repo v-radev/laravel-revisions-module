@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Clusters\PostsCluster\Models;
+namespace App\Clusters\RevisionerCluster\Models;
 
 use App\Clusters\MainCluster\Models\MasterModel;
 
 class Revision extends MasterModel
 {
+
+    protected $casts = [
+        'approved' => 'boolean'
+    ];
 
     public $fillable = [
         'item_id',
@@ -13,6 +17,7 @@ class Revision extends MasterModel
         'model',
         'before',
         'after',
+        'approved',
     ];
 
 }
