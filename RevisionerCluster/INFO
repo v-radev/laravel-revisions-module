@@ -20,4 +20,6 @@ after      bigtext
 
 INSTALLATION
 1. php artisan migrate --path=/app/Clusters/RevisionerCluster/Resources/Database/migrations
-2.  use RevisionableModelTrait in a model (App\Clusters\RevisionerCluster\Library\Traits\RevisionableModelTrait)
+2. use RevisionableModelTrait in a model (App\Clusters\RevisionerCluster\Library\Traits\RevisionableModelTrait)
+3. In app.php register the provider App\Clusters\RevisionerCluster\Providers\RevisionerClusterServiceProvider::class
+4. art vendor:publish --provider="App\Clusters\RevisionerCluster\Providers\RevisionerClusterServiceProvider"
