@@ -20,4 +20,10 @@ class Revision extends MasterModel
         'approved',
     ];
 
+
+    public function user()
+    {
+        return $this->belongsTo( 'App\Clusters\AuthCluster\Models\User' );
+    }
+
 }

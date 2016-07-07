@@ -8,8 +8,8 @@ class RevisionsController extends RevisionerClusterController
 {
     public function index()
     {
-        //TODO group by model name
-        $revisions = Revision::all();
+        $revisions = Revision::with('user')->get();
+        $revisions = $revisions->groupBy('model');
 
         return $this->view('revisions.index', compact('revisions'));
     }
