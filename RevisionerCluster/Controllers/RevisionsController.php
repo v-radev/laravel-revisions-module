@@ -6,6 +6,9 @@ use App\Clusters\RevisionerCluster\Models\Revision;
 
 class RevisionsController extends RevisionerClusterController
 {
+
+    //TODO once revised there should be no option to approve or reject
+
     public function index()
     {
         $revisions = Revision::with('user')->get();
@@ -14,9 +17,11 @@ class RevisionsController extends RevisionerClusterController
         return $this->view('revisions.index', compact('revisions'));
     }
 
-    public function show()
+    public function show( $id )
     {
-        // Show revision by ID
+        $revision = Revision::with('user')->findOrFail($id);
+
+        return $this->view('revisions.show', compact('revision'));
     }
 
     public function update()

@@ -4,6 +4,10 @@
 Revisions
 @endsection
 
+@section('header')
+    <h1>A list of all revisions <small>All records are grouped by model name</small></h1>
+@stop
+
 @section('content')
 
     <div style="padding: 0 20px">
@@ -22,9 +26,9 @@ Revisions
                                     <th style="width: 50px">#ID</th>
                                     <th style="width: 80px">Model ID</th>
                                     <th style="width: 200px">By User</th>
-                                    <th style="width: 200px">Date</th>
-                                    <th style="width: 120px; text-align: center;">Is approved?</th>
-                                    <th style="width: 120px; text-align: center;">Is revised?</th>
+                                    <th style="width: 140px">Date</th>
+                                    <th style="width: 100px; text-align: center;">Approved?</th>
+                                    <th style="width: 100px; text-align: center;">Revised?</th>
                                     <th>Fields</th>
                                 </tr>
                                 @foreach($revisionRecords as $revision)
