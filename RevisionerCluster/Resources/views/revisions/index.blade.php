@@ -30,6 +30,7 @@ Revisions
                                     <th style="width: 100px; text-align: center;">Approved?</th>
                                     <th style="width: 100px; text-align: center;">Revised?</th>
                                     <th>Fields</th>
+                                    <th style="width: 150px;">Actions</th>
                                 </tr>
                                 @foreach($revisionRecords as $revision)
                                     <tr>
@@ -40,6 +41,14 @@ Revisions
                                         <td style="text-align: center;">{!! $revision->approved ? '<i style="color: green" class="fa fa-check"></i>' : '<i style="color: red" class="fa fa-close"></i>' !!}</td>
                                         <td style="text-align: center;">{!! $revision->revised ? '<i style="color: green" class="fa fa-check"></i>' : '<i style="color: red" class="fa fa-close"></i>' !!}</td>
                                         <td><?php echo implode(' | ', array_keys(json_decode($revision->before, true))); ?></td>
+                                        <td>
+                                            <a href="{{ route($revisionRoutes . 'show', [$revision->id]) }}" class="btn btn-primary btn-sm pull-left" style="margin-right: 10px;">
+                                                View
+                                            </a>
+                                            @unless( $revision->revised )
+                                                @include($revisionerClusterViews .'common._delete', ['route' => [$revisionRoutes .'destroy', $revision->id], 'delete' => 'Delete'])
+                                            @endunless
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

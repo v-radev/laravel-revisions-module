@@ -30,7 +30,16 @@ Show revision
                     <h3 class="box-title">Before</h3>
                 </div>
                 <div class="box-body">
-
+                    @foreach( json_decode($revision->before, true) as $field => $change )
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ ucfirst($field) }}</h3>
+                            </div>
+                            <div class="box-body">
+                                {{ $change }}
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -40,7 +49,21 @@ Show revision
                     <h3 class="box-title">After</h3>
                 </div>
                 <div class="box-body">
-
+                    @forelse( json_decode($revision->after, true) as $field => $change )
+                        <div class="box box-default">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ ucfirst($field) }}</h3>
+                            </div>
+                            <div class="box-body">
+                                {{ $change }}
+                            </div>
+                        </div>
+                    @empty
+                        <div class="callout callout-info">
+                            <h4>This is a new item</h4>
+                            <p>Because this item is newly created there are no changes in the data to be shown here. When you click <b>Approve</b> the item is going to be created. If you click <b>Reject</b> the item won't be created and this revision will be stored as reference.</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -50,7 +73,7 @@ Show revision
         <div class="col-md-12">
             <div class="box box-danger">
                 <div class="box-footer">
-                    <a class="btn btn-primary" href="#" style="margin-right: 15px;">Go Back</a>
+                    <a class="btn btn-primary" href="{{ route($revisionRoutes . 'index') }}" style="margin-right: 15px;">Go Back</a>
                     @unless( $revision->revised )
                         <button class="btn btn-success btn-lg" type="submit" style="margin-right: 15px;">Approve</button>
                         <button class="btn btn-danger btn-lg" type="submit">Reject</button>

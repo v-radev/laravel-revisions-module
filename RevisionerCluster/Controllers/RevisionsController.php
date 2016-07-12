@@ -3,15 +3,14 @@
 namespace App\Clusters\RevisionerCluster\Controllers;
 
 use App\Clusters\RevisionerCluster\Models\Revision;
+use Laracasts\Flash\Flash;
 
 class RevisionsController extends RevisionerClusterController
 {
 
-    //TODO once revised there should be no option to approve or reject
-
     public function index()
     {
-        $revisions = Revision::with('user')->get();
+        $revisions = Revision::with('user')->orderBy('item_id')->get();
         $revisions = $revisions->groupBy('model');
 
         return $this->view('revisions.index', compact('revisions'));
@@ -27,10 +26,17 @@ class RevisionsController extends RevisionerClusterController
     public function update()
     {
         // Update revision and model record if approved
+        //TODO check if already revised do not update
     }
 
-    public function destroy()
+    public function destroy( $id )
     {
-        // Delete revision
+        $revision = Revision::findOrFail($id);
+
+        $revision->delete();
+
+        Flash::success( 'Revision deleted successfully.' );
+
+        return redirect()->back();
     }
 }
