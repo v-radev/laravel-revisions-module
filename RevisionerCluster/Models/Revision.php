@@ -8,6 +8,7 @@ class Revision extends MasterModel
 {
 
     protected $casts = [
+        'revised'  => 'boolean',
         'approved' => 'boolean',
         'before'   => 'array',
         'after'    => 'array',
@@ -20,6 +21,7 @@ class Revision extends MasterModel
         'before',
         'after',
         'approved',
+        'revised',
     ];
 
 
