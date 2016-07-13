@@ -30,7 +30,7 @@ Show revision
                     <h3 class="box-title">Before</h3>
                 </div>
                 <div class="box-body">
-                    @foreach( json_decode($revision->before, true) as $field => $change )
+                    @foreach( $revision->before as $field => $change )
                         <div class="box box-default">
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{ ucfirst($field) }}</h3>
@@ -49,7 +49,7 @@ Show revision
                     <h3 class="box-title">After</h3>
                 </div>
                 <div class="box-body">
-                    @forelse( json_decode($revision->after, true) as $field => $change )
+                    @forelse( $revision->after as $field => $change )
                         <div class="box box-default">
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{ ucfirst($field) }}</h3>

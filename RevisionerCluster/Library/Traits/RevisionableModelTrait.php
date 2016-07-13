@@ -32,13 +32,13 @@ trait RevisionableModelTrait
     protected function revision()
     {
         $changed = [];
-        $before = json_encode($this->attributes);
+        $before = $this->attributes;
         $isNew = $this->fresh() ? false : true;
 
         // We are updating an existing record, so get the changed data
         if ( !$isNew ) {
             $changed = $this->getDirty();
-            $before = json_encode(array_intersect_key($this->fresh()->toArray(), $changed));
+            $before = array_intersect_key($this->fresh()->toArray(), $changed);
         }
 
         $data = [
@@ -46,7 +46,7 @@ trait RevisionableModelTrait
             'user_id' => \Auth::id(),
             'model'   => static::class,
             'before'  => $before,
-            'after'   => json_encode($changed),
+            'after'   => $changed,
         ];
 
         Revision::create( $data );

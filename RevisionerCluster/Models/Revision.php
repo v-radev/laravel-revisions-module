@@ -8,7 +8,9 @@ class Revision extends MasterModel
 {
 
     protected $casts = [
-        'approved' => 'boolean'
+        'approved' => 'boolean',
+        'before'   => 'array',
+        'after'    => 'array',
     ];
 
     public $fillable = [
