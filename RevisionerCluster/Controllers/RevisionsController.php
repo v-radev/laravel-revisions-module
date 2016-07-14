@@ -54,7 +54,7 @@ class RevisionsController extends RevisionerClusterController
                 Flash::success( 'Model '. $model .' updated successfully.' );
                 $revision->update([ 'revised' => true, 'approved' => true ]);
             } else {
-                Flash::errror( 'There was an error updating model '. $model .' !' );
+                Flash::error( 'There was an error updating model '. $model .' !' );
             }
 
             return redirect()->back();
@@ -65,7 +65,7 @@ class RevisionsController extends RevisionerClusterController
             Flash::success( 'Model '. $model .' created successfully.' );
             $revision->update([ 'revised' => true, 'approved' => true ]);
         } else {
-            Flash::errror( 'There was an error creating model '. $model .' !' );
+            Flash::error( 'There was an error creating model '. $model .' !' );
         }
 
         return redirect()->back();
